@@ -1,5 +1,5 @@
 
-
+# none binary approach...
 def part1(r):
     rowMin = 0
     rowMax = 127
@@ -27,6 +27,15 @@ def part1(r):
     # print(row,col,ID)
     return row,col,ID
 
+# binary approach lol
+def binaryApproach(r):
+    r = r.replace('F','0').replace('B','1').replace('L','0').replace('R','1')
+    row = int(r[:7],2)
+    col =int(r[7:],2)
+    ID = (row*8)+col  
+    print(row,col,ID)
+    return row,col,ID
+
 def lsort(e):
   return e['ID']
 
@@ -38,6 +47,7 @@ l = []
 max = 0
 for x in f:
     row,col,ID = part1(x)
+    #row,col,ID = binaryApproach(x)
     if max < ID:
         max = ID
     l.append({"row":row,"col":col,"ID":ID})
