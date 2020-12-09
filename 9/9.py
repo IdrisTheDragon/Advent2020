@@ -1,6 +1,3 @@
-
-
-
 def validate(l,x):
     for y in l:
         for z in l:
@@ -34,9 +31,6 @@ def part2(l,weakness):
     print(values)
     print(values[0]+values[-1])
 
-    
-
-
 #f = open("example2.txt", "r")
 
 #preamble = 5
@@ -52,6 +46,3 @@ for x in f:
 weakness = part1(l,preamble)
 
 part2(l,weakness)
-
-
-
