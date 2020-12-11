@@ -1,15 +1,14 @@
-
-
 def prettyPrint(l):
     for x in l:
         print(x)
 
-def part1Helper(x,y,s,r,l):
-    neighbor = [(-1,-1),(-1,0),(-1,1),
+neighbour = [(-1,-1),(-1,0),(-1,1),
                 (0,-1),          (0,1),
                  (1,-1), (1,0), (1,1)]
+
+def part1Helper(x,y,s,r,l):
     neighbors = 0
-    for n in neighbor:
+    for n in neighbour:
         nx = x
         ny = y
 
@@ -18,17 +17,12 @@ def part1Helper(x,y,s,r,l):
 
         if 0 <= nx <= len(l)-1 and 0 <= ny <= len(r)-1 and l[nx][ny] == '#':
             neighbors = neighbors+1
-
         #print(nx,ny)
-
     return neighbors
 
 def part2Helper(x,y,s,r,l):
-    neighbor = [(-1,-1),(-1,0),(-1,1),
-                (0,-1),          (0,1),
-                 (1,-1), (1,0), (1,1)]
     neighbors = 0
-    for n in neighbor:
+    for n in neighbour:
         nx = x
         ny = y
 
@@ -44,12 +38,8 @@ def part2Helper(x,y,s,r,l):
                     break
             else:
                 break
-
         #print(nx,ny)
-
     return neighbors
-
-
 
 def round(part,l):
     m = []
@@ -94,7 +84,6 @@ def part(part,l):
 
 
 #f = open("example.txt", "r")
-#f = open("example2.txt", "r")
 f = open("input.txt", "r")
 l = []
 for x in f:
