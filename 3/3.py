@@ -1,4 +1,3 @@
-
 def part1(l,right,down):
     l = l[down::down]
     row = right
@@ -23,8 +22,6 @@ def part2(l):
     d = part1(l,7,1)
     e = part1(l,1,2)
     print(a*b*c*d*e)
-
-
 
 f = open("input.txt", "r")
 #f = open("example.txt", "r")

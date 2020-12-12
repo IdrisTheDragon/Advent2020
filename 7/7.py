@@ -1,5 +1,3 @@
-
-
 def part1(l, bagColour):
     count = set()
     for key, x in l.items():
@@ -23,7 +21,6 @@ def part2(l, bagColour):
             count = count + num
             count = count + num * part2(l,colour)
     return count
-
 
 #f = open("example2.txt", "r")
 #f = open("example.txt", "r")

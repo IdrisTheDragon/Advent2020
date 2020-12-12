@@ -1,5 +1,3 @@
-
-
 def part1(l):
     sum = 0
     combined = set()

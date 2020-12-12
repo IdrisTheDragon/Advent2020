@@ -1,5 +1,3 @@
-
-
 def part1(min,max,letter,password):
     lcount = 0
     for y in password:

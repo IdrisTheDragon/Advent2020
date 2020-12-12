@@ -13,7 +13,6 @@ def part2(i):
                     print(y*x*z)
                     return
 
-
 f = open("input.txt", "r")
 l = []
 for x in f:

@@ -1,4 +1,3 @@
-
 # none binary approach...
 def part1(r):
     rowMin = 0
@@ -39,8 +38,6 @@ def binaryApproach(r):
 def lsort(e):
   return e['ID']
 
-
-
 #f = open("example.txt", "r")
 f = open("input.txt", "r")
 l = []
@@ -59,6 +56,4 @@ for x in range(1, len(l)-1):
     if l[x]["ID"] != l[x+1]["ID"]-1:
         print(l[x],l[x+1])
         print(l[x]["ID"]+1)
-        break
-
-    
+        break  

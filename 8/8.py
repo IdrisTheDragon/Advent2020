@@ -1,8 +1,3 @@
-
-
-
-
-
 def executeInstruction(l,n,acc):
     if len(l) == n:
         #print("end of instructions")
@@ -21,10 +16,6 @@ def executeInstruction(l,n,acc):
     else:
         n=n+1
     return executeInstruction(l,n,acc)
-
-
-
-
 
 class Instruction:
     def __init__(self, instruction, value):
@@ -76,5 +67,3 @@ for num,x in enumerate(l):
             x.instruction = 'nop'
         elif x.instruction == 'nop':
             x.instruction = 'jmp'
-
-

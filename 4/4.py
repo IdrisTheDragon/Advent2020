@@ -1,4 +1,3 @@
-
 fields = ["byr" ,
 "iyr" ,
 "eyr",
@@ -83,8 +82,6 @@ def part2(l):
             passport = passport + x
     print(count)
     return count
-        
-
 
 #f = open("example.txt", "r")
 f = open("input.txt", "r")
