@@ -5,14 +5,14 @@ def part1(l):
         if 'mask' in  x:
             a = x.split()
             mask = a[2]
-            print(mask)
+            #print(mask)
         elif 'mem' in x:
             a = x.split()
             v= a[2]
             a = a[0].split('[')
             loc = a[1][:-1]
             v = '{:036b}'.format(int(v))
-            print(v)
+            #print(v)
             for n,y in enumerate(mask):
                 if y == 'X':
                     pass
@@ -44,7 +44,7 @@ def part2(l):
         if 'mask' in  x:
             a = x.split()
             mask = a[2]
-            print(mask)
+            #print(mask)
         elif 'mem' in x:
             a = x.split()
             v= int(a[2])
@@ -72,5 +72,5 @@ l = []
 for x in f:
     l.append(x)
 
-#part1(l)
+part1(l)
 part2(l)
