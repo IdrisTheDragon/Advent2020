@@ -1,3 +1,4 @@
+import time
 
 def part(l,lim):
     l = l[0].split(',')
@@ -31,10 +32,28 @@ def part(l,lim):
         
     #print(spoke)
     print(turn,lastNum)
-        
 
-    
-    
+def optimised(l,lim):
+    l = l[0].split(',')
+    spoke = {}
+    nextNum = 0
+    prevNum=0
+    turn = 0
+    for n,x in enumerate(l[:-1]):
+        nextNum = int(x)
+        turn = n+1
+        spoke[nextNum] = turn
+    nextNum = int(l[-1])
+    while turn != lim:
+        turn = turn + 1
+        #print(spoke)
+        #print(turn,nextNum)
+        pT = spoke.get(nextNum,turn)
+        spoke[nextNum] = turn
+        prevNum = nextNum
+        nextNum = turn - pT      
+    #print(spoke)
+    print(turn,prevNum)
 
 #f = open("example.txt", "r")
 f = open("input.txt", "r")
@@ -45,4 +64,11 @@ for x in f:
     l.append(x)
 
 part(l,2020)
+
+start_time = time.time()
 part(l,30000000)
+print("Original: %s seconds" % (time.time() - start_time))
+
+start_time = time.time()
+optimised(l,30000000)
+print("Optimised: %s seconds" % (time.time() - start_time))
