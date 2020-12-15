@@ -1,4 +1,5 @@
 import time
+import array
 
 def part(l,lim):
     l = l[0].split(',')
@@ -55,6 +56,27 @@ def optimised(l,lim):
     #print(spoke)
     print(turn,prevNum)
 
+def optimised1(l,lim):
+    l = l[0].split(',')
+    spoke = array.array('I', [0]) * lim
+    nextNum = 0
+    prevNum=0
+    turn = 0
+    for n,x in enumerate(l[:-1]):
+        nextNum = int(x)
+        turn = n+1
+        spoke[nextNum] = turn
+    nextNum = int(l[-1])
+    for turn in range(turn+1, lim+1):
+        #print(spoke)
+        #print(turn,nextNum)
+        pT = spoke[nextNum]
+        spoke[nextNum] = turn
+        prevNum = nextNum
+        nextNum = 0 if pT == 0 else turn - pT      
+    #print(spoke)
+    print(turn,prevNum)
+
 #f = open("example.txt", "r")
 f = open("input.txt", "r")
 #f = open("example2.txt", "r")
@@ -72,3 +94,7 @@ print("Original: %s seconds" % (time.time() - start_time))
 start_time = time.time()
 optimised(l,30000000)
 print("Optimised: %s seconds" % (time.time() - start_time))
+
+start_time = time.time()
+optimised1(l,30000000)
+print("Optimised1: %s seconds" % (time.time() - start_time))
