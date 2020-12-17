@@ -4,47 +4,33 @@ def prettyPrint(l,layer):
             print(x,end='')
         print()
 
-neighbour = [ (-1,-1,-1),(-1,0,-1),(-1,1,-1),
-                (0,-1,-1), (0,0,-1) ,(0,1,-1),
-                (1,-1,-1), (1,0,-1), (1,1,-1),
-    
-                (-1,-1,0),(-1,0,0),(-1,1,0),
-                (0,-1,0),          (0,1,0),
-                (1,-1,0), (1,0,0), (1,1,0),
-                 
-                (-1,-1,1),(-1,0,1),(-1,1,1),
-                (0,-1,1), (0,0,1), (0,1,1),
-                (1,-1,1), (1,0,1), (1,1,1)]
-
 def nextCube(x,y,z,l):
     activeN = 0
     inactiveN = 0
 
-    debug = z == 0 and y ==4 and x ==4
+    for az in [-1,0,1]:
+        for ay in [-1,0,1]:
+            for ax in [-1,0,1]:
+                nx = x - 1
+                ny = y - 1
+                nz = z - 1
+                nx = nx + ax
+                ny = ny + ay
+                nz = nz + az
 
-    for n in neighbour:
-        nx = x - 1
-        ny = y - 1
-        nz = z
-        nx = nx + n[0]
-        ny = ny + n[1]
-        nz = nz + n[2]
+                if az == 0 and ay == 0 and ax == 0:
+                    continue
 
-        
-            
-
-        if nz in l.keys():
-            zLayer = l[nz]
-            if 0 <= ny <= len(zLayer) - 1 and 0 <= nx <= len(zLayer[ny])-1 and zLayer[ny][nx] == '#':
-                activeN = activeN + 1
-            else:
-                inactiveN = inactiveN + 1
-        else:
-            inactiveN = inactiveN + 1
+                #print(nz,ny,nx)
+         
+                if 0 <= nz <= len(l) - 1 and 0 <= ny <= len(l[nz]) - 1 and 0 <= nx <= len(l[nz])-1 and l[nz][ny][nx] == '#':
+                    activeN = activeN + 1
+                else:
+                    inactiveN = inactiveN + 1
 
     curCell = '.'
-    if z in l.keys() and 0 <= y-1 <= len(l[z]) - 1 and 0 <= x-1 <= len(l[z][y-1]) - 1:
-        curCell = l[z][y-1][x-1]
+    if 0 <= z-1 <= len(l) - 1 and 0 <= y-1 <= len(l[z-1]) - 1 and 0 <= x-1 <= len(l[z-1][y-1]) - 1:
+        curCell = l[z-1][y-1][x-1]
 
 
     if curCell == '#' and (activeN ==2 or activeN == 3):
@@ -56,38 +42,34 @@ def nextCube(x,y,z,l):
 
 
 def part1(l,startSize):
-    zMin = 0
     zMax = 0
-    xMax = startSize
-    yMax = startSize
+    xyMax = startSize
     cycle = 1 
     
-    while cycle <= 6:
+    while cycle <=6:
         cycle = cycle+1
-        zMin = zMin - 1
-        zMax = zMax + 1
-        xMax = xMax + 2
-        yMax = yMax + 2
-        #print('cycle',cycle-1)
-        temp = {}
-        for z in range(zMin,zMax+1):
-            temp[z] = []
-            for y in range(0,yMax+1):
+        zMax = zMax + 2
+        xyMax = xyMax + 2
+        print('cycle',cycle-1)
+        temp = []
+        for z in range(0,zMax+1):
+            temp.append([])
+            for y in range(0,xyMax+1):
                 tempY = []
-                for x in range(0,xMax+1):
+                for x in range(0,xyMax+1):
                     tempY.append(nextCube(x,y,z,l))
                     pass
                 temp[z].append(tempY)
-            #print('layer',z)
-            #prettyPrint(temp,z)
-        #print()
+            print('layer',(-zMax/2) + z )
+            prettyPrint(temp,z)
+        print()
         l = temp
         
     
     activeCount = 0
-    for z in range(zMin,zMax+1):
-        for y in range(0,yMax+1):
-            for x in range(0,xMax+1):
+    for z in range(0,zMax+1):
+        for y in range(0,xyMax+1):
+            for x in range(0,xyMax+1):
                 if l[z][y][x] == '#':
                     activeCount = activeCount+1
     print(activeCount)
@@ -97,11 +79,11 @@ def part1(l,startSize):
 
 startSize = 8
 f = open("input.txt", "r")
-l = {}
-l[0] = []
+l = []
+l.append([])
 for x in f:
     l[0].append(x[:-1])
 
-#prettyPrint(l,0)
+prettyPrint(l,0)
 
 part1(l,startSize)
