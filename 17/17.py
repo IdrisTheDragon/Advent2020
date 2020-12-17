@@ -50,7 +50,7 @@ def part1(l,startSize):
         cycle = cycle+1
         zMax = zMax + 2
         xyMax = xyMax + 2
-        print('cycle',cycle-1)
+        #print('cycle',cycle-1)
         temp = []
         for z in range(0,zMax+1):
             temp.append([])
@@ -60,9 +60,9 @@ def part1(l,startSize):
                     tempY.append(nextCube(x,y,z,l))
                     pass
                 temp[z].append(tempY)
-            print('layer',(-zMax/2) + z )
-            prettyPrint(temp,z)
-        print()
+            #print('layer',(-zMax/2) + z )
+            #prettyPrint(temp,z)
+        #print()
         l = temp
         
     
@@ -84,6 +84,6 @@ l.append([])
 for x in f:
     l[0].append(x[:-1])
 
-prettyPrint(l,0)
+#prettyPrint(l,0)
 
 part1(l,startSize)
